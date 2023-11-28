@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the DevOps & Cloud Coaching from Sagar</h1>
+    <H1>Welcome to DevOps</H1>
 
     <form id="task-form">
         <label for="task-input">Task:</label>
