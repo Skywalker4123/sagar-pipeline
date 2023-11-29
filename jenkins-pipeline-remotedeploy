@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/architectdevops7/jenkins-pipelines.git'
+                 git 'https://github.com/Skywalker4123/sagar-pipeline.git'
             }
         }
         stage('Build Package') {
@@ -14,15 +14,20 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Test Package') {
+            steps {
+                sh 'mvn test'
+            }
+        }
         stage('Deploy Package') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://54.85.43.193:8080/')], contextPath: null, war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'admin-tom', path: '', url: 'http://54.153.54.159:8080')], contextPath: null, war: '**/*.war'
             }
         }    
     }
     post {
         always {
             emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: '$DEFAULT_REPLYTO'
-            }
-        }
+         }
+}
 }
